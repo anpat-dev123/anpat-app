@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anpat - Aplikasi Nomor Antrian</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <div class="container">
+    <h1>Ambil Nomor Antrian</h1>
+    <button onclick="ambilAntrian()">Ambil Nomor</button>
+    <p id="nomorSekarang"></p>
+  </div>
+
+  <hr>
+
+  <div class="admin-panel">
+    <h2>Panel Pedagang</h2>
+    <p>Nomor Terakhir: <span id="nomorTerakhir">0</span></p>
+    <button onclick="panggilSelanjutnya()">Panggil Selanjutnya</button>
+    <button onclick="resetAntrian()">Reset Antrian</button>
+    <p id="nomorDipanggil"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
