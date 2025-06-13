@@ -1,30 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anpat - Aplikasi Nomor Antrian</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
+  <meta name="description" content="Anpat App PWA">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="manifest" href="/public/manifest.json">
+  <link rel="apple-touch-icon" href="/public/icon-192x192.png">
+  <title>Anpat App</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Ambil Nomor Antrian</h1>
-    <button onclick="ambilAntrian()">Ambil Nomor</button>
-    <p id="nomorSekarang"></p>
-  </div>
+  <h1>Anpat App</h1>
+  <p>Aplikasi PWA Anpat</p>
 
-  <hr>
-
-  <div class="admin-panel">
-    <h2>Panel Pedagang</h2>
-    <p>Nomor Terakhir: <span id="nomorTerakhir">0</span></p>
-    <button onclick="panggilSelanjutnya()">Panggil Selanjutnya</button>
-    <button onclick="resetAntrian()">Reset Antrian</button>
-    <p id="nomorDipanggil"></p>
-  </div>
-
-  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/public/service-worker.js')
+        .then(reg => console.log('Service Worker terdaftar!', reg))
+        .catch(err => console.error('Pendaftaran service worker gagal!', err));
+    }
+  </script>
 </body>
 </html>
