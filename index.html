@@ -2,22 +2,24 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Anpat App PWA">
+  <meta name="description" content="Anpat App - Antrian Digital">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="manifest" href="/public/manifest.json">
-  <link rel="apple-touch-icon" href="/public/icon-192x192.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
   <title>Anpat App</title>
 </head>
 <body>
-  <h1>Anpat App</h1>
-  <p>Aplikasi PWA Anpat</p>
+  <header>
+    <h1>Anpat App</h1>
+    <p>Aplikasi Antrian Digital yang Mudah dan Cepat</p>
+  </header>
 
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/public/service-worker.js')
-        .then(reg => console.log('Service Worker terdaftar!', reg))
-        .catch(err => console.error('Pendaftaran service worker gagal!', err));
-    }
-  </script>
+  <main>
+    <h2>Silakan Mengambil Nomor Antrian</h2>
+    <button id="ambilAntrian">Ambil Antrian</button>
+    <div id="nomorAntrian">Silakan ambil nomor antrian Anda</div>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
