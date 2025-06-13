@@ -1,0 +1,59 @@
+public/
+ └ manifest.json
+ └ icon-192x192.png
+ └ icon-512x512.png
+ └ service-worker.js
+ └ index.
+html{
+  "name": "Anpat App",
+  "short_name": "Anpat",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4caf50",
+  "icons": [
+    {
+      "src": "/public/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+self.addEventListener('install', event => {
+  console.log('Installing service worker');
+});
+
+// Mengontrol fetch event
+self.addEventListener('fetch', event => {
+  event.respondWith(fetch(event.request).catch(() => {
+    return new Response('Offline!', {status: 503,statusText:'Service Unavailable'})
+  }));
+});
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Anpat App PWA">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="manifest" href="/public/manifest.json">
+  <link rel="apple-touch-icon" href="/public/icon-192x192.png">
+  <title>Anpat App</title>
+</head>
+<body>
+  <h1>Anpat App</h1>
+  <p>Aplikasi PWA Anpat</p>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/public/service-worker.js')
+        .then(reg => console.log('Service Worker terdaftar!', reg))
+        .catch(err => console.error('Pendaftaran service worker gagal!', err));
+    }
+  </script>
+</body>
+</html>
